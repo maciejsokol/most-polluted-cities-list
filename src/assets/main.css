@@ -1,0 +1,305 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,700);
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  float: left;
+  margin: 0;
+  font-family: 'PT Sans', sans-serif;
+  background: url(images/smog_cracow.jpg);
+}
+
+.main-content {
+  width: 100%;
+  height: 100%;
+  float: left;
+  background: linear-gradient(-45deg, rgba(186,185,155,0.2), rgba(155, 137, 133, 0.4), rgba(170,123,117,0.8));
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+@keyframes gradientBG {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.center-block {
+  display: block;
+  margin: 0 auto;
+}
+
+/* BEGIN: Buttons */
+button {
+  display: inline-block;
+  font-weight: 400;
+  color: #6c757d;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid #6c757d;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: 3px;
+  transition: color .15s ease-in-out,
+              background-color .15s ease-in-out,
+              border-color .15s ease-in-out,
+              box-shadow .15s ease-in-out;
+}
+button:hover {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+button.focus,
+button:focus {
+  box-shadow: 0 0 0 0.2rem rgba(108,117,125,.5);
+}
+button:not(:disabled).active,
+button:not(:disabled):active {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+/* END: Buttons */
+
+/* BEGIN: Form with search bar */
+form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+form > .h1 {
+  display: block;
+  margin-bottom: 26px;
+  font-size: 34px;
+  color: #ffffff;
+  text-align: center;
+}
+form > .search-bar {
+  position: relative;
+  background: rgba(255, 255, 255, 0.7);
+  border-bottom: 1px solid #ccc;
+}
+form > .search-bar > label {
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  transform: translateY(-50%);
+  font-weight: bold;
+  opacity: 0.3;
+  pointer-events: none;
+}
+form > .search-bar > input[type="text"] {
+  width: 100%;
+  padding: 20px 20px 20px 50px;
+  border: 0;
+  background: #eeeeee;
+}
+form > .search-bar > input[type="text"]:focus {
+  outline: 0;
+  background-color: #ffffff;
+}
+form > .search-bar > input[type="text"]:focus + label {
+  opacity: 0;
+}
+form > .search-bar > input[type="text"] {
+  /* map maker in svg */
+  background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20384%20512%22%3E%3Cpath%20fill%3D%22currentColor%22%20d%3D%22M192%2096a96%2096%200%201%200%200%20192%2096%2096%200%200%200%200-192zm0%20160a64%2064%200%201%201%200-128%2064%2064%200%200%201%200%20128zm0-256C86%200%200%2086%200%20192c0%2077%2027%2099%20172%20310%2010%2013%2030%2013%2040%200%20145-211%20172-233%20172-310C384%2086%20298%200%20192%200zm0%20474C53%20272%2032%20256%2032%20192A159%20159%200%200%201%20192%2032a159%20159%200%200%201%20160%20160c0%2064-21%2080-160%20282z%22%2F%3E%3C%2Fsvg%3E);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 15px 50%;
+}
+form > .search-bar > input[type="text"]:valid {
+  /* checked mark in svg */
+  background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2068%2068%22%3E%3Cpath%20d%3D%22M35%2045l-8%208-17-18%208-8%209%2010%2023-22%208%208zM34%200a34%2034%200%201%200%2034%2034A34%2034%200%200%200%2034%200z%22%20fill%3D%22%2341d873%22%2F%3E%3C%2Fsvg%3E);
+}
+form > .search-bar > input[type="text"]:valid + label {
+  opacity: 0;
+}
+form > .search-bar > input[type="text"]:invalid:not(:focus):not(:placeholder-shown) {
+  background: #ffc0cb;
+}
+form > .search-bar > input[type="text"]:invalid:not(:focus):not(:placeholder-shown) + label {
+  opacity: 0;
+}
+form > .search-bar > input[type="text"]:invalid:focus:not(:placeholder-shown) ~ .requirements {
+  max-height: 200px;
+  padding: 10px 30px 10px 50px;
+}
+form > .search-bar .requirements {
+  padding: 0 30px 0 50px;
+  max-height: 0;
+  transition: 0.3s;
+  overflow: hidden;
+  color: #ff0000;
+  font-style: italic;
+}
+form input[type="submit"] {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+  padding: 20px;
+  border: 0;
+  background: #41D873;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+/* END: Form with search bar */
+
+/* BEGIN: Autocomplete list */
+.autocomplete {
+  position: relative;
+  padding: 20px;
+  margin-top: 52px;
+  border-radius: 3px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: 0 10px 9px -6px rgba(0, 0, 0, 0.25);
+}
+.autocomplete-results {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  z-index: 1;
+}
+.autocomplete-result {
+  display: block;
+  list-style: none;
+  margin-bottom: -1px;
+  padding: 10px 15px 10px 50px;
+  cursor: pointer;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  color: #555555;
+}
+.autocomplete-result.is-active,
+.autocomplete-result:hover {
+  background-color: #6c757d;
+  color: #ffffff;
+}
+.autocomplete button {
+  margin-top: 26px;
+  padding: 8px 12px;
+  font-size: 18px;
+}
+
+.pollute-list {
+  position: relative;
+  box-shadow: 0 10px 9px -6px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  border-radius: 3px;
+  margin: 52px auto 0;
+  overflow: hidden;
+  background-color: rgba(209, 209, 209, 0.8);
+  padding: 20px;
+}
+.pollute-list > table {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+/* END: Autocomplete list */
+
+/* BEGIN: Cloud animation */
+.clouds {
+  background: #ffffff;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.clouds .cloud {
+  transition: fill 2s ease;
+}
+.clouds #cloud1 {
+  fill: #efefef;
+  transition: fill 2s ease;
+  animation: matrixCloud1 20s ease-in-out infinite;
+}
+.clouds #cloud2 {
+  fill: #E6E6E6;
+  animation: matrixCloud2 30s linear infinite;
+}
+.clouds #cloud3 {
+  fill: #D5D5D5;
+  animation: matrixCloud3 20s ease infinite;
+}
+@keyframes matrixCloud1 {
+  0% {
+    transform: matrix(1,0,0,1,0,0);
+  }
+  50% {
+    transform: matrix(1,0,0,1,276,0)
+  }
+  100% {
+    transform: matrix(1,0,0,1,0,0);
+  }
+}
+@keyframes matrixCloud2 {
+  0% {
+    transform: matrix(1,0,0,1,276,0);
+  }
+  25% {
+    transform: matrix(1,0,0,1,323,0)
+  }
+  50% {
+    transform: matrix(1,0,0,1,276,0);
+  }
+  75% {
+    transform: matrix(1,0,0,1,53,0);
+  }
+  100% {
+    transform: matrix(1,0,0,1,276,0);
+  }
+}
+@keyframes matrixCloud3 {
+  0% {
+    transform: matrix(1,0,0,1,5,0);
+  }
+  50% {
+    transform: matrix(1,0,0,1,375,0);
+  }
+  100% {
+    transform: matrix(1,0,0,1,5,0);
+  }
+}
+/* END: Cloud animation */
+
+/* BEGIN: Collapse support */
+.expand-enter-active,
+.expand-leave-active {
+  transition: height 1s ease-in-out;
+  overflow: hidden;
+}
+.expand-enter,
+.expand-leave-to {
+  height: 0;
+}
+.expand-enter-active,
+.expand-leave-active {
+  transition-property: opacity, height;
+}
+.expand-enter,
+.expand-leave-to {
+  opacity: 0;
+}
+/* END: Collapse support */
